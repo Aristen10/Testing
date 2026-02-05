@@ -3,14 +3,15 @@
 
 generator client {
   provider = "prisma-client-js"
+  
 }
 
 datasource db {
   provider = "sqlite"
+  url   = env("DATABASE_URL")
 }
-
 model Produit {
-  id    String @id @default(cuid(2))
+  id    String @id @default(cuid())
   name  String @unique
   price Int    @default(0)
 }
