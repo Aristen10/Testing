@@ -13,5 +13,9 @@ datasource db {
 model Produit {
   id    String @id @default(cuid())
   name  String @unique
-  price Int    @default(0)
+  description String?
+  price       Float
+  stock       Int      @default(0)
+  createdAt   DateTime @default(now())
+  
 }
