@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const { id } = await params;
   const product = await getProduct(id);
   return { 
-    title: product ? `${product.name} - ${product.price}€` : 'Produit introuvable' 
+    title: product ? `${product.name} - ${product.price}Ar` : 'Produit introuvable' 
   };
 }
 
@@ -35,12 +35,12 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     <main className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-3xl mx-auto">
         
-        {/* Retour */}
+    
         <Link href="/Post" className="text-blue-600 hover:underline mb-6 inline-block">
           ← Retour à la liste
         </Link>
 
-        {/* Carte Produit */}
+       
         <div className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200">
           <div className="bg-blue-600 p-8 text-white">
             <h1 className="text-3xl font-bold">{product.name}</h1>

@@ -16,6 +16,7 @@ model Produit {
   description String?
   price       Float
   stock       Int      @default(0)
+  categorie String @default(" ")
   createdAt   DateTime @default(now())
   
 }
