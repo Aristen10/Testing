@@ -36,7 +36,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       <div className="max-w-3xl mx-auto">
         
     
-        <Link href="/Post" className="text-blue-600 hover:underline mb-6 inline-block">
+        <Link href="/Produits" className="text-blue-600 hover:underline mb-6 inline-block">
           ← Retour à la liste
         </Link>
 

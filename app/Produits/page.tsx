@@ -1,7 +1,6 @@
 import React from 'react'
 import { prisma } from '../../lib/prisma'
 import { CreateProduit } from '@/action/action'
-import Link from 'next/link'
 import Card from '../components/Card'
 import AddProduitModal from '../components/AddProduitModal'
 
@@ -16,8 +15,8 @@ export default async function page() {
         <div className='grid grid-cols-4  gap-10 px-64 py-8'>
             {produits.map(p => (
                 <Card
-                  key={p.id}      // ← key pour React (liste)
-                  id={p.id}       // ← id pour ta Card
+                  key={p.id}      
+                  id={p.id}       
                   name={p.name}
                   price={p.price}
                 />

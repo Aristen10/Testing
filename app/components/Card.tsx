@@ -3,6 +3,7 @@
 import { useTransition } from 'react'
 import { deletePost } from '@/action/action'
 import Link from 'next/link'
+import UpdateProduitModal from './UpdateProduitModal'
 
 interface ProductProps {
   id: string       
@@ -13,8 +14,7 @@ interface ProductProps {
 const Card = ({ id, name, price }: ProductProps) => {
   const [isPending, startTransition] = useTransition()
 
-  function handleDelete() {
-    if (!confirm(`Supprimer "${name}" ?`)) return
+  function handleDelete() { 
 
     startTransition(async () => {
       await deletePost(id)
@@ -24,7 +24,7 @@ const Card = ({ id, name, price }: ProductProps) => {
   return (
     <div className='w-3xs h-60 flex bg-[#212E53] rounded-[8px] flex-col gap-3 justify-center items-center hover:scale-105 transition delay-150 duration-200 ease-in-out'>
       <p>{name}</p>
-      <p>{price}</p>
+      <p>{price} Ar</p>
 
       <Link
         href={`/Post/${id}`}
@@ -36,10 +36,15 @@ const Card = ({ id, name, price }: ProductProps) => {
       <button
         onClick={handleDelete}
         disabled={isPending}
-        className='bg-red-400 hover:bg-red-600 px-4 py-1 rounded-xl disabled:opacity-50'
+        className='bg-red-500 hover:bg-red-600 px-4 py-1 rounded-xl disabled:opacity-50'
       >
         {isPending ? 'Suppression...' : 'Supprimer'}
       </button>
+      <UpdateProduitModal
+        id={id}           
+        currentName={name}      
+        currentPrice={price}    
+      />
     </div>
   )
 }
