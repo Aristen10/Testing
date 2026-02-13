@@ -20,5 +20,17 @@ export async function CreateProduit(formData:FormData) {
     }
        
         })
-     revalidatePath("/app/Produits")
+
+     revalidatePath("/Produits")
+}
+export async function deletePost(id: string) {
+  try {
+        await prisma.produit.delete({
+        where: { id },
+        })
+        revalidatePath("/Produits")
+    }
+catch {
+    return { error: "Erreur suppression" }
+  }
 }

@@ -78,6 +78,7 @@ export default function AddProduitModal() {
                 >
                   Envoyer
                 </button>
+               
               </div>
             </form>
 
