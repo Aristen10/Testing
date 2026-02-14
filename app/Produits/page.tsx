@@ -19,6 +19,7 @@ export default async function page() {
                   id={p.id}       
                   name={p.name}
                   price={p.price}
+                  stock={p.stock}
                 />
 
             ))}

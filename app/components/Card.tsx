@@ -9,9 +9,10 @@ interface ProductProps {
   id: string       
   name: string
   price: number
+  stock: number
 }
 
-const Card = ({ id, name, price }: ProductProps) => {
+const Card = ({ id, name, price,stock }: ProductProps) => {
   const [isPending, startTransition] = useTransition()
 
   function handleDelete() { 
@@ -43,14 +44,16 @@ const Card = ({ id, name, price }: ProductProps) => {
                   transition-all duration-200
                   hover:scale-105 active:scale-95">
                 <RiDeleteBin5Fill 
-                    className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"/>
+                    className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+  />
   
   {isPending ? 'Suppression...' : 'Supprimer'}
 </button>
       <UpdateProduitModal
         id={id}           
         currentName={name}      
-        currentPrice={price}    
+        currentPrice={price}
+      cuurrentStock={stock}  
       />
     </div>
   )

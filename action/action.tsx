@@ -4,8 +4,11 @@ import { revalidatePath } from "next/cache";
 //Creation Produit
 export async function CreateProduit(formData:FormData) {
     const name = formData.get('name') as string
-    const priceString = formData.get('price');
-    const price=parseInt(priceString as string) 
+    const priceString = formData.get('price') as string;
+    const stockString = formData.get('stock') as string
+     const price=parseInt(priceString) 
+    const stock = parseInt(stockString)
+    
 
     if(!name || !price){
         
@@ -15,7 +18,8 @@ export async function CreateProduit(formData:FormData) {
     await prisma.produit.create({
     data:{
             name:name,
-            price:price
+            price:price,
+            stock:stock
 
     }
        
@@ -39,14 +43,16 @@ catch {
 
   
 
-export async function updateProduit(id: string, Data: FormData) {
-  const name = Data.get('name') as string
-  const priceString = Data.get('price') as string
+export async function updateProduit(id: string, formData: FormData) {
+  const name = formData.get('name') as string
+  const priceString = formData.get('price') as string
+  const stockString = formData.get('stock') as string
   const price = parseFloat(priceString)
+  const stock = parseInt(stockString)
 try{
     await prisma.produit.update({
     where : {id},
-    data:{name,price}
+    data:{name,price,stock}
 
   })
   revalidatePath("/Produits")

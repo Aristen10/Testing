@@ -1,0 +1,18 @@
+-- RedefineTables
+PRAGMA defer_foreign_keys=ON;
+PRAGMA foreign_keys=OFF;
+CREATE TABLE "new_Produit" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "price" REAL NOT NULL,
+    "stock" INTEGER NOT NULL DEFAULT 2,
+    "categorie" TEXT NOT NULL DEFAULT ' bien de consommation',
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO "new_Produit" ("categorie", "createdAt", "description", "id", "name", "price", "stock") SELECT "categorie", "createdAt", "description", "id", "name", "price", "stock" FROM "Produit";
+DROP TABLE "Produit";
+ALTER TABLE "new_Produit" RENAME TO "Produit";
+CREATE UNIQUE INDEX "Produit_name_key" ON "Produit"("name");
+PRAGMA foreign_keys=ON;
+PRAGMA defer_foreign_keys=OFF;

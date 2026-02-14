@@ -8,9 +8,10 @@ interface Props {
   id: string
   currentName: string
   currentPrice: number
+  cuurrentStock: number
 }
 
-export default function UpdateProduitModal({ id, currentName, currentPrice }: Props) {
+export default function UpdateProduitModal({ id, currentName, currentPrice,cuurrentStock }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
@@ -19,7 +20,12 @@ export default function UpdateProduitModal({ id, currentName, currentPrice }: Pr
     setError(null)
 
     startTransition(async () => {
-       await updateProduit(id, formData)
+       try {
+        await updateProduit(id, formData)
+        setIsOpen(false) 
+      } catch (err) {
+        setError("Erreur lors de la modification")
+      }
       
     })
   }
@@ -28,16 +34,22 @@ export default function UpdateProduitModal({ id, currentName, currentPrice }: Pr
     <>
     <button
   onClick={() => setIsOpen(true)}
-  className="flex items-center gap-2 px-5 py-3 
+  className="group flex items-center gap-2 px-5 py-3 
              bg-blue-600 hover:bg-blue-700 
              text-white font-semibold 
              rounded-xl shadow-md 
-             transition-all duration-200 
+             disabled:opacity-50
+             transition-all duration-200
              hover:scale-105 active:scale-95"
 >
-  <PiPencilLineBold className="text-lg" />
+  <PiPencilLineBold
+    className="opacity-0 -translate-x-2
+               group-hover:opacity-100 group-hover:translate-x-0
+               transition-all duration-300"
+  />
   Modifier
 </button>
+
       
 
       {isOpen && (
@@ -67,6 +79,7 @@ export default function UpdateProduitModal({ id, currentName, currentPrice }: Pr
                   className='border border-blue-400 rounded-xl px-4 py-2 focus:outline-none focus:border-blue-500'
                 />
               </div>
+              
 
               <div className='flex flex-col gap-1'>
                 <label className='text-sm font-medium text-white'>Prix</label>
@@ -79,6 +92,17 @@ export default function UpdateProduitModal({ id, currentName, currentPrice }: Pr
                   className='border border-blue-400 rounded-xl px-4 py-2 focus:outline-none focus:border-blue-500'
                 />
               </div>
+              <div className='flex flex-col gap-1'>
+                <label className='text-sm font-medium text-white'>Stock</label>
+                <input
+                  type='number'
+                  name='stock'
+                  defaultValue={cuurrentStock}
+                  required
+                  className='border border-blue-400 rounded-xl px-4 py-2 focus:outline-none focus:border-blue-500'
+                />
+              </div>
+              
 
               {error && <p className='text-red-200 text-sm'>❌ {error}</p>}
 

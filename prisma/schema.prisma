@@ -13,10 +13,11 @@ datasource db {
 model Produit {
   id    String @id @default(cuid())
   name  String @unique
-  description String?
+  description String @default("Produit de consommation")
   price       Float
-  stock       Int      @default(0)
-  categorie String @default(" ")
+  stock Int @default(1)
+
+  
   createdAt   DateTime @default(now())
   
 }
