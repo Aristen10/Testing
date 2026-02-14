@@ -1,9 +1,9 @@
 'use client'
-
 import { useTransition } from 'react'
 import { deletePost } from '@/action/action'
 import Link from 'next/link'
 import UpdateProduitModal from './UpdateProduitModal'
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 interface ProductProps {
   id: string       
@@ -36,10 +36,17 @@ const Card = ({ id, name, price }: ProductProps) => {
       <button
         onClick={handleDelete}
         disabled={isPending}
-        className='bg-red-500 hover:bg-red-600 px-4 py-1 rounded-xl disabled:opacity-50'
-      >
-        {isPending ? 'Suppression...' : 'Supprimer'}
-      </button>
+        className="group flex items-center gap-2 px-4 py-3 
+                  bg-red-500 hover:bg-red-600 text-white
+                  rounded-xl shadow-md
+                  disabled:opacity-50
+                  transition-all duration-200
+                  hover:scale-105 active:scale-95">
+                <RiDeleteBin5Fill 
+                    className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"/>
+  
+  {isPending ? 'Suppression...' : 'Supprimer'}
+</button>
       <UpdateProduitModal
         id={id}           
         currentName={name}      

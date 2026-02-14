@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import { updateProduit } from '@/action/action'
+import { PiPencilLineBold } from "react-icons/pi";
 
 interface Props {
   id: string
@@ -25,12 +26,19 @@ export default function UpdateProduitModal({ id, currentName, currentPrice }: Pr
 
   return (
     <>
-      <button
-        onClick={() => setIsOpen(true)}
-        className='flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-2xl transition-colors'
-      >
-        ✏️ Modifier
-      </button>
+    <button
+  onClick={() => setIsOpen(true)}
+  className="flex items-center gap-2 px-5 py-3 
+             bg-blue-600 hover:bg-blue-700 
+             text-white font-semibold 
+             rounded-xl shadow-md 
+             transition-all duration-200 
+             hover:scale-105 active:scale-95"
+>
+  <PiPencilLineBold className="text-lg" />
+  Modifier
+</button>
+      
 
       {isOpen && (
         <div
