@@ -43,9 +43,7 @@ const Card = ({ id, name, price,stock }: ProductProps) => {
                   disabled:opacity-50
                   transition-all duration-200
                   hover:scale-105 active:scale-95">
-                <RiDeleteBin5Fill 
-                    className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-  />
+                <RiDeleteBin5Fill/>
   
   {isPending ? 'Suppression...' : 'Supprimer'}
 </button>

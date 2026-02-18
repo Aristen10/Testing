@@ -42,11 +42,7 @@ export default function UpdateProduitModal({ id, currentName, currentPrice,cuurr
              transition-all duration-200
              hover:scale-105 active:scale-95"
 >
-  <PiPencilLineBold
-    className="opacity-0 -translate-x-2
-               group-hover:opacity-100 group-hover:translate-x-0
-               transition-all duration-300"
-  />
+  <PiPencilLineBold/>
   Modifier
 </button>
 
@@ -117,7 +113,7 @@ export default function UpdateProduitModal({ id, currentName, currentPrice,cuurr
                 <button
                   type='submit'
                   disabled={isPending}
-                  className='flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors disabled:opacity-50'
+                  className='flex-1 py-2 bg-blue-600 '
                 >
                   {isPending ? 'Sauvegarde...' : 'Confirmer'}
                 </button>
