@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Navbar from "./components/NavBar";
 import ScrollReveal from "./components/ScrollReveal";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-  <div className="flex min-h-screen bg-zinc-50 font-sans dark:bg-black pt-20">
+  <div className="flex min-h-screen bg-zinc-50 font-sans dark:bg-black pt-20 flex-col">
   <Navbar />
   <ScrollReveal>
     <div className="space-y-2 space-x-8 px-8">
@@ -20,6 +21,7 @@ export default function Home() {
 
     
   </ScrollReveal>
+  <Footer/>
 
   
 
